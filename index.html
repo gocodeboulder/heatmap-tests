@@ -1,41 +1,25 @@
-
-		
-<!DOCTYPE html PUBLIC>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=820" />
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css"></link>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans|Fjalla+One' rel='stylesheet' type='text/css'>
-<link type="text/css" rel="stylesheet" href="css/shCoreEclipse.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=820" />
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css"></link>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans|Fjalla+One' rel='stylesheet' type='text/css'>
+	<link type="text/css" rel="stylesheet" href="css/shCoreEclipse.css"/>
 
-<link href="libs/bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="libs/bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
 
-<link href="libs/slider/css/slider.css" rel="stylesheet">
+	<link href="libs/slider/css/slider.css" rel="stylesheet">
 
-<!--[if lte IE 8]>
-    <link rel="stylesheet" href="leaflet/dist/leaflet.ie.css" />
-<![endif]-->
-<title>
-Web GL Heatmap Leaflet Plugin
-</title>
+	<!--[if lte IE 8]>
+	    <link rel="stylesheet" href="leaflet/dist/leaflet.ie.css" />
+	<![endif]-->
+	<title>
+		Web GL Heatmap Leaflet Plugin
+	</title>
 </head>
 	<body>
-			<div class="first container">
-			<div id="navigation">
-				<ul>
-					<li><a target="_blank" data-title="View on Github" href="https://github.com/ursudio/webgl-heatmap-leaflet"><img src="images/github_icon_20.png" height="20"
-					 /></a></li>
-					 <li class="floatRight"><a target="_blank" data-title="See more Ursudio projects" href="http://www.ursudio.com/"><img src="/apple-touch-icon.png" height="20"
-					 /></a></li>
-					 <li class="floatRight"><a target="_blank" data-title="Try out Leaflet" href="http://www.leafletjs.com/"><img src="images/leaflet_icon_20.png" height="20"
-					 /></a></li>
-					 <li class="floatRight"><a target="_blank" data-title="Map tiles from CloudMade" href="http://www.cloudmade.com/"><img src="images/cloudmade_icon_20.png" height="20"
-					 /></a></li>
-				</ul>
-			</div>
-		</div>
 		<div class="container">
 			<div id="header">
 				<h1>WebGL Heatmap Leaflet Plugin</h1>
@@ -45,9 +29,12 @@ Web GL Heatmap Leaflet Plugin
 		<div id="map"></div>
 
 		<div class="container">
-			<div id="slider1" class="slider"></div>
-			<div id="slider2" class="slider"></div>
-			<div id="slider3" class="slider"></div>
+			<div id="slider1" class="heatmap slider"></div>
+			<div id="slider2" class="heatmap slider"></div>
+			<div id="slider3" class="heatmap slider"></div>
+
+			<br /><br />
+			<div class="opacity slider"></div>
 
 			<a name="data"></a><h3><a href="#data">Data:</a></h3> 
 			<p>

@@ -27,47 +27,6 @@ a {
 a:hover { 
 	color:#BDBD44; 
 }
-#navigation a:before, 
-#navigation a:after { 
-	margin-top:5px;
-	transition: all .1s ease-out;
-	-webkit-transition: all .1s ease-out;
-	-moz-transition: all .1s ease-out;
-	position: absolute;
-	opacity:0;
-	display:block;
-	visibility:hidden;
-}
-#navigation a:before {
-	content: '';
-	border: 8px solid transparent;
-	border-bottom-color:black;
-	top:24px;
-	left:35%;
-}
-#navigation a:after {
-	content: attr(data-title);
-	background: black;
-	color: white;
-	padding: 2px 7px;
-	top: 40px;
-	font-size:.8em;
-	text-align:center;
-	white-space:nowrap;
-}
-#navigation li.floatRight a:after {
-	right:0;
-}
-#navigation a:hover:before, 
-#navigation a:hover:after { 
-	margin-top:0;
-	opacity: 1;
-	visibility: visible;
-}
-
-#navigation ul {
-	padding: 0 50px;
-}
 
 a[name] {
 	position:absolute;
@@ -85,10 +44,6 @@ body {
 	z-index:9999; 
 	width:100%; 
 	background: #DDD;
-}
-.container.last { 
-	background:#222 url(images/dark_wall.png); 
-	min-height:185px; 
 }
 ul { 
 	list-style:none; 
@@ -123,8 +78,7 @@ li a:hover {
 li a img { 
 	vertical-align:middle; 
 }
-#header { 	
-	padding:100px 0 0; 
+#header {
 	text-align:center; 
 }
 #map { 

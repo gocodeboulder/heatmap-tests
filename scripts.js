@@ -14,7 +14,7 @@ L.control.scale().addTo(map);
 
 
 //custom size for this example, and autoresize because map style has a percentage width
-var heatmap = new L.TileLayer.WebGLHeatMap({size: 1000}); 
+var heatmap = new L.TileLayer.WebGLHeatMap({size: 1000, alphaRange: 0.5, opacity: 0.7}); 
 
 
 //var scale = 0.1;
@@ -45,7 +45,7 @@ var dataSets = [generateDataSet(0.1, 50, 500),
 var data = [];
 data.concat.apply(data, dataSets);
 
-heatmap.setData(data);
+heatmap.clearData();
 
 function updateHeatMap(multiplier1, multiplier2 ) {
 	heatmap.setData([]);
@@ -78,22 +78,27 @@ $( document ).ready(function () {
 
 	//$('.slider').on('slideStop', function (e) {
 	$('.slider').on('slide', function (e) {
-		//console.log('slider ' + e.value);
-		switch( $(this).attr('id') ) {
-			case 'slider1':
-				slider1Val = e.value;
-				break;
-			case 'slider2':
-				slider2Val = e.value;
-				break;
-			case 'slider3':
-				slider3Val = e.value;
-				break;
+		//console.log($(this).hasClass('heatmap'));
+		if ($(this).hasClass('heatmap')) {
+			switch( $(this).attr('id') ) {
+					case 'slider1':
+						slider1Val = e.value;
+						break;
+					case 'slider2':
+						slider2Val = e.value;
+						break;
+					case 'slider3':
+						slider3Val = e.value;
+						break;
+				}
+				var sliderScale = 1/(slider1Val + slider2Val + slider3Val);
+				updateHeatMap(slider1Val - slider2Val*slider3Val*sliderScale, 
+								slider2Val- slider1Val*slider3Val*sliderScale, 
+								slider3Val - slider1Val*slider2Val*sliderScale);
 		}
-		var sliderScale = 1/(slider1Val + slider2Val + slider3Val);
-		updateHeatMap(slider1Val - slider2Val*slider3Val*sliderScale, 
-						slider2Val- slider1Val*slider3Val*sliderScale, 
-						slider3Val - slider1Val*slider2Val*sliderScale);
+		else if( $(this).hasClass('opacity') ) {
+
+		}
 	});
 
 	/* 

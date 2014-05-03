@@ -1,0 +1,112 @@
+
+		
+<!DOCTYPE html PUBLIC>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=820" />
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css"></link>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans|Fjalla+One' rel='stylesheet' type='text/css'>
+<link type="text/css" rel="stylesheet" href="css/shCoreEclipse.css"/>
+
+<link href="libs/bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<link href="libs/slider/css/slider.css" rel="stylesheet">
+
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="leaflet/dist/leaflet.ie.css" />
+<![endif]-->
+<title>
+Web GL Heatmap Leaflet Plugin
+</title>
+</head>
+	<body>
+			<div class="first container">
+			<div id="navigation">
+				<ul>
+					<li><a target="_blank" data-title="View on Github" href="https://github.com/ursudio/webgl-heatmap-leaflet"><img src="images/github_icon_20.png" height="20"
+					 /></a></li>
+					 <li class="floatRight"><a target="_blank" data-title="See more Ursudio projects" href="http://www.ursudio.com/"><img src="/apple-touch-icon.png" height="20"
+					 /></a></li>
+					 <li class="floatRight"><a target="_blank" data-title="Try out Leaflet" href="http://www.leafletjs.com/"><img src="images/leaflet_icon_20.png" height="20"
+					 /></a></li>
+					 <li class="floatRight"><a target="_blank" data-title="Map tiles from CloudMade" href="http://www.cloudmade.com/"><img src="images/cloudmade_icon_20.png" height="20"
+					 /></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<div id="header">
+				<h1>WebGL Heatmap Leaflet Plugin</h1>
+				<h2>Using the <a href="http://codeflow.org/entries/2013/feb/04/high-performance-js-heatmaps/" target="_blank">WebGL Heatmap library</a>, made by Florian Bösch <a href="https://twitter.com/pyalot" target="_blank">(@pyalot)</a></h2>
+			</div>
+		</div>
+		<div id="map"></div>
+
+		<div class="container">
+			<div id="slider1" class="slider"></div>
+			<div id="slider2" class="slider"></div>
+			<div id="slider3" class="slider"></div>
+
+			<a name="data"></a><h3><a href="#data">Data:</a></h3> 
+			<p>
+			A visualization of the frequency and location of instagram photos tagged with <a href="http://instagram.com/aokhalifax" target="_blank">#aokhalifax</a>, a grass roots initiative to brighten the perspective of citizens and tourists: the goal being to promote positivity in Halifax.
+			</p>
+			<a name="options"></a><h3><a href="#options">Options:</a></h3> 
+			<ul>
+				<li><b>size</b>: in meters (default: 30km)</li>
+				<li><b>opacity</b>: in percent/100 (default: 1)</li>
+				<li><b>gradientTexture</b>: url-to-texture-image (default: false)</li>
+				<li><b>alphaRange</b>: change transparency in heatmap (default: 1)</li>
+				<li><b>autoresize</b>: resize heatmap when map size changes (default: false)</li>
+			</ul>
+			<a name="usage"></a><h3><a href="#usage">Usage:</a></h3> 
+			<pre class="brush: js;">
+	var baseURL = 'http://{s}.tile.cloudmade.com/{API}/{map_style}/256/{z}/{x}/{y}.png';
+    
+	var base = L.tileLayer(baseURL, { 
+		API: your-api, 
+		map_style: '44094' 
+		});
+    
+	//Halifax, Nova Scotia
+	var map = L.map('map', {layers: [base]}).setView([44.65, -63.57], 12);
+    
+	L.control.scale().addTo(map);
+	
+	//custom size for this example
+	var heatmap = new L.TileLayer.WebGLHeatMap({size: 1000}); 
+	
+	// dataPoints is an array of arrays: [[lat, lng, intensity]...]
+	var dataPoints = [[44.6674, -63.5703, 37], [44.6826, -63.7552, 34], [44.6325, -63.5852, 41], [44.6467, -63.4696, 67], [44.6804, -63.487, 64], [44.6622, -63.5364, 40], [44.603, - 63.743, 52] ...];
+	for (var i = 0, len = dataPoints.length; i < len; i++) {
+		var point = dataPoints[i];
+		heatmap.addDataPoint(point[0],
+			 point[1],
+			 point[2]);
+	}
+	// alternatively, you can skip the for loop and add the whole dataset with heatmap.setData(dataPoints)
+	
+	map.addLayer(heatmap);</pre>
+		</div>
+		<div class="last container">
+			<div id="footer">
+			</div>
+		</div>
+	<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+	<script type="text/javascript" src="js/shCore.js"></script>
+	<script type="text/javascript" src="js/shBrushJScript.js"></script>
+
+	<script type="text/javascript" src="js/webgl-heatmap.js"></script>
+	<script type="text/javascript" src="js/webgl-heatmap-leaflet.js"></script>
+
+	<script src="libs/jquery-1.11.1.min.js"></script>
+	<script src="libs/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+	<script src="libs/slider/js/bootstrap-slider.js"></script>
+
+
+	<script src="scripts.js"></script>
+
+	</body>
+</html>
